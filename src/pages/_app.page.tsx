@@ -6,7 +6,7 @@ import { RootErrorFallback } from "../core/components/RootErrorFallback"
 import "@/styles/globals.css"
 
 const mantineTheme: MantineThemeOverride = {
-  colorScheme: "dark",
+  colorScheme: "light",
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
