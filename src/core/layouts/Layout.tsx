@@ -1,8 +1,9 @@
 import Head from "next/head"
 import React, { PropsWithChildren, Suspense } from "react"
-import { BlitzLayout } from "@blitzjs/next"
-import { AppShell, Navbar, Header, Text, Footer } from "@mantine/core"
-import { Horizontal, Vertical } from "mantine-layout-components"
+import { BlitzLayout, Routes } from "@blitzjs/next"
+import { AppShell, Navbar, Header, Text, Footer, Anchor } from "@mantine/core"
+import { Horizontal } from "mantine-layout-components"
+import Link from "next/link"
 
 type LayoutProps = {
   title?: string
@@ -33,7 +34,9 @@ const Layout: BlitzLayout<PropsWithChildren<LayoutProps>> = ({
         header={
           <Header height={45} p="xs">
             <Horizontal debug fullH>
-              <Text fw="bold">Refapp</Text>
+              <Anchor component={Link} underline={false} color="gray.3" href={Routes.Home()}>
+                Refapp
+              </Anchor>
             </Horizontal>
           </Header>
         }
@@ -54,18 +57,7 @@ const Layout: BlitzLayout<PropsWithChildren<LayoutProps>> = ({
         })}
       >
         {/* Your application here */}
-        <Suspense fallback={"Loading..."}>
-          <div
-            style={{
-              width: "100%",
-              maxWidth,
-            }}
-          >
-            <Vertical debug fullW fullH>
-              {children}
-            </Vertical>
-          </div>
-        </Suspense>
+        <Suspense fallback={"Loading..."}>{children}</Suspense>
       </AppShell>
     </>
   )
